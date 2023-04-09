@@ -11,18 +11,19 @@ const Chat = () => {
   const [room, setRoom] = useState("");
 
   const ENDPOINT = import.meta.env.VITE_ENDPOINT_URL;
-  console.log(ENDPOINT);
 
   useEffect(() => {
     const data = queryString.parse(location.search);
 
-    //socket = io(ENDPOINT);
+    socket = io(ENDPOINT);
+    console.log(socket);
 
     setName(data.name);
     setRoom(data.room);
-  });
-
+  },[ENDPOINT, location.search]);
   return <div>Chat</div>;
 };
 
 export default Chat;
+
+        
