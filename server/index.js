@@ -26,11 +26,10 @@ const io = socketio(server, {
 app.use(cors());
 app.use(router);
 
-io.on("connection", (socket) => {
-  //console.log("a user connected");
+io.on("connect", (socket) => {
   socket.on("join", ({ name, room }, callback) => {
-    // console.log(socket.id);
     const { error, user } = addUser({ id: socket.id, name, room });
+
     if (error) return callback(error);
 
     socket.join(user.room);
@@ -43,6 +42,11 @@ io.on("connection", (socket) => {
       .to(user.room)
       .emit("message", { user: "admin", text: `${user.name} has joined!` });
 
+    io.to(user.room).emit("roomData", {
+      room: user.room,
+      users: getUsersInRoom(user.room),
+    });
+
     callback();
   });
 
@@ -53,8 +57,20 @@ io.on("connection", (socket) => {
 
     callback();
   });
+
   socket.on("disconnect", () => {
-    console.log("user disconnected");
+    const user = removeUser(socket.id);
+
+    if (user) {
+      io.to(user.room).emit("message", {
+        user: "Admin",
+        text: `${user.name} has left.`,
+      });
+      io.to(user.room).emit("roomData", {
+        room: user.room,
+        users: getUsersInRoom(user.room),
+      });
+    }
   });
 });
 
