@@ -14,12 +14,14 @@ let socket;
 const Chat = () => {
   const [name, setName] = useState("");
   const [room, setRoom] = useState("");
+  const [users, setUsers] = useState("");
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
 
   const ENDPOINT = import.meta.env.VITE_ENDPOINT_URL;
 
   useEffect(() => {
+    console.log(location.search);
     const { name, room } = queryString.parse(location.search);
     setRoom(room);
     setName(name);
@@ -53,6 +55,7 @@ const Chat = () => {
           sendMessage={sendMessage}
         />
       </div>
+      //
       <TextContainer users={users} />
     </div>
   );
