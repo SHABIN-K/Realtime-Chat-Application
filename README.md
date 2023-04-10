@@ -4,8 +4,8 @@
 Full Stack Realtime-Chat-Application
 
 ## Tech Stack
-
-**Client:** React, Sweetalert2, TailwindCSS, Vite
+  
+**Client:** React, Vite
 
 **Server:** Node, Express, socket.io
 
@@ -21,7 +21,7 @@ To run this project, you will need to add the following environment variables to
 Clone the project
 
 ```bash
-  git clone https://github.com/SHABIN-K/AI-Image-Generation-app.git
+  git clone https://github.com/SHABIN-K/Realtime-Chat-Application.git
 ```
 **Client:**
 ````bash
