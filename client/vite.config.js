@@ -1,6 +1,6 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import dotenv from 'dotenv';
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import dotenv from "dotenv";
 
 export default defineConfig(({ mode }) => {
   dotenv.config({ mode });
@@ -10,5 +10,5 @@ export default defineConfig(({ mode }) => {
     server: {
       port: 3000,
     },
-  }
+  };
 });

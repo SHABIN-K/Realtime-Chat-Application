@@ -13,10 +13,10 @@ const ENDPOINT = import.meta.env.VITE_ENDPOINT_URL;
 let socket;
 
 const Chat = () => {
-  const [name, setName] = useState('');
-  const [room, setRoom] = useState('');
-  const [users, setUsers] = useState('');
-  const [message, setMessage] = useState('');
+  const [name, setName] = useState("");
+  const [room, setRoom] = useState("");
+  const [users, setUsers] = useState("");
+  const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
@@ -25,9 +25,9 @@ const Chat = () => {
     socket = io(ENDPOINT);
 
     setRoom(room);
-    setName(name)
+    setName(name);
 
-    socket.emit('join', { name, room }, (error) => {
+    socket.emit("join", { name, room }, (error) => {
       if (error) {
         alert(error);
       }
@@ -35,8 +35,8 @@ const Chat = () => {
   }, [ENDPOINT, location.search]);
 
   useEffect(() => {
-    socket.on('message', message => {
-      setMessages(messages => [...messages, message]);
+    socket.on("message", (message) => {
+      setMessages((messages) => [...messages, message]);
     });
 
     socket.on("roomData", ({ users }) => {
@@ -48,20 +48,24 @@ const Chat = () => {
     event.preventDefault();
 
     if (message) {
-      socket.emit('sendMessage', message, () => setMessage(''));
+      socket.emit("sendMessage", message, () => setMessage(""));
     }
-  }
+  };
 
   return (
     <div className="outerContainer">
       <div className="container">
         <InfoBar room={room} />
         <Messages messages={messages} name={name} />
-        <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
+        <Input
+          message={message}
+          setMessage={setMessage}
+          sendMessage={sendMessage}
+        />
       </div>
       <TextContainer users={users} />
     </div>
   );
-}
+};
 
 export default Chat;
