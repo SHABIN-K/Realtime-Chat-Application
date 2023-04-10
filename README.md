@@ -7,25 +7,14 @@ Full Stack Realtime-Chat-Application
 
 **Client:** React, Sweetalert2, TailwindCSS, Vite
 
-**Server:** Node, Express, Cloudinary, Mongodb, Openai
-
-
-## Screenshot
-![Web capture_29-3-2023_201651_localhost](https://user-images.githubusercontent.com/73272797/228886759-cccffce7-3160-4abc-8086-cea40334612a.jpeg)
+**Server:** Node, Express, socket.io
 
 ## Environment Variables
 
 To run this project, you will need to add the following environment variables to your .env file
 
 **Client:**
-* `VITE_SERVER_URL` your backend url
-
-**Server:**
-* `MONGODB_URL` Your mongo db url
-* `OPENAI_API_KEY` your OPENAI_API_KEY 
-* `CLOUDINARY_CLOUD_NAME` your cloudinary name
-* `CLOUDINARY_API_KEY` your cloudinary api key 
-* `CLOUDINARY_API_SECRET` your cloudinary api api secret 
+* `VITE_ENDPOINT_URL` your backend url 
 
 ## Run Locally
 
@@ -45,7 +34,6 @@ npm run dev
 ````bash
 cd server
 npm install
-# <Create .env appropriately>
 npm start
 ````
 
