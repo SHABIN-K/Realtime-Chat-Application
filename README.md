@@ -1,7 +1,11 @@
 
-# Realtime-Chat-Application
+# Full Stack Realtime-Chat-Application 💖
 
-Full Stack Realtime-Chat-Application
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## About
+
+This is a personal project built in my spare time for learning purposes.
 
 ## Tech Stack
   
