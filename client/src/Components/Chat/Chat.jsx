@@ -13,17 +13,20 @@ const Chat = () => {
   const ENDPOINT = import.meta.env.VITE_ENDPOINT_URL;
 
   useEffect(() => {
-    const data = queryString.parse(location.search);
+    const { name, room } = queryString.parse(location.search);
+    setRoom(room);
+    setName(name);
 
     socket = io(ENDPOINT);
-    console.log(socket);
 
-    setName(data.name);
-    setRoom(data.room);
-  },[ENDPOINT, location.search]);
+    socket.emit("join", { name, room }, () => {});
+
+    // return () => {
+    //   socket.emit("dsisconnect");
+    //   socket.off();
+    // };
+  }, [ENDPOINT, location.search]);
   return <div>Chat</div>;
 };
 
 export default Chat;
-
-        
