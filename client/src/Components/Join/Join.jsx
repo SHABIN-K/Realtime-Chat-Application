@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, {useState } from "react";
 import { Link } from "react-router-dom";
 
 import "./Join.css";
+const URL = import.meta.env.VITE_ENDPOINT_URL
 
 const Join = () => {
   const [name, setName] = useState("");
   const [room, setRoom] = useState("");
   const [error, setError] = useState("");
+
+
 
   return (
     <div className="joinOuterContainer">
