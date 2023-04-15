@@ -6,6 +6,7 @@ import "../Join/Join.css";
 const Join = () => {
   const [name, setName] = useState("");
   const [room, setRoom] = useState("");
+  const [error, setError] = useState("");
 
   return (
     <div className="joinOuterContainer">
@@ -27,8 +28,14 @@ const Join = () => {
             onChange={(event) => setRoom(event.target.value)}
           />
         </div>
+        {error && <p className="error">{error}</p>}
         <Link
-          onClick={(e) => (!name || !room ? e.preventDefault() : null)}
+          onClick={(e) => {
+            if (!name || !room) {
+              e.preventDefault();
+              setError("Both fields are required.");
+            }
+          }}
           to={`/chat?name=${name}&room=${room}`}
         >
           <button className={"button mt-20"} type="submit">

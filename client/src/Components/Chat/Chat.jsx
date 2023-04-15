@@ -9,7 +9,8 @@ import Input from "../Input/Input";
 
 import "./Chat.css";
 
-const ENDPOINT = import.meta.env.VITE_ENDPOINT_URL;
+const ENDPOINT = import.meta.env.VITE_ENDPOINT_URL
+
 let socket;
 
 const Chat = () => {
@@ -21,6 +22,7 @@ const Chat = () => {
 
   useEffect(() => {
     const { name, room } = queryString.parse(location.search);
+    console.log(name,room);
 
     socket = io(ENDPOINT);
 

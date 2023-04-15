@@ -25,6 +25,10 @@
     border-bottom: 2px solid white;
   }
   
+  .error {
+    color: red;
+    font-weight: bold;
+  }
   .button {
       color: #fff !important;
       text-transform: uppercase;
