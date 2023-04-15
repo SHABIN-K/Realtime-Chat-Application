@@ -41,7 +41,7 @@ const Join = () => {
             Sign In
           </button>
         </Link>
-        <div className="vtag mt-20">version 2.3</div>
+        <div className="vtag mt-20">version 2.5</div>
         <div className="vtag ">Created by shabin k 😎</div>
       </div>
     </div>
