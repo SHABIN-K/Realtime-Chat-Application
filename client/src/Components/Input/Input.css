@@ -45,7 +45,7 @@ select:focus {
   text-decoration: none;
 }
 
-.errorButton:hover{
+.errorButton:hover {
   color: #fff !important;
-  background: rgb(16, 77, 163) ;
+  background: rgb(16, 77, 163);
 }

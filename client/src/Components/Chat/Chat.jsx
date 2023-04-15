@@ -9,8 +9,7 @@ import Input from "../Input/Input";
 
 import "./Chat.css";
 
-const ENDPOINT = import.meta.env.VITE_ENDPOINT_URL
-
+const ENDPOINT = import.meta.env.VITE_ENDPOINT_URL;
 
 let socket;
 
@@ -20,7 +19,7 @@ const Chat = () => {
   const [users, setUsers] = useState("");
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
-  const [error, setError] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const { name, room } = queryString.parse(location.search);
@@ -50,11 +49,11 @@ const Chat = () => {
   const sendMessage = (event) => {
     event.preventDefault();
     if (message) {
-      socket.emit("sendMessage", message, (res) =>{ 
-        if(res) {
+      socket.emit("sendMessage", message, (res) => {
+        if (res) {
           setError(true);
         }
-        setMessage("")
+        setMessage("");
       });
     }
   };
@@ -62,7 +61,7 @@ const Chat = () => {
   return (
     <div className="outerContainer">
       <div className="container">
-        <InfoBar room={room}  error={error}/>
+        <InfoBar room={room} error={error} />
         <Messages messages={messages} name={name} />
         <Input
           error={error}
@@ -71,11 +70,9 @@ const Chat = () => {
           sendMessage={sendMessage}
         />
       </div>
-     <TextContainer users={users} />
+      <TextContainer users={users} />
     </div>
   );
 };
 
 export default Chat;
-
-

@@ -1,16 +1,12 @@
-import React, {useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import "./Join.css";
-const URL = import.meta.env.VITE_ENDPOINT_URL
 
 const Join = () => {
   const [name, setName] = useState("");
   const [room, setRoom] = useState("");
   const [error, setError] = useState("");
-
-
-
   return (
     <div className="joinOuterContainer">
       <div className="joinInnerContainer">
@@ -45,8 +41,8 @@ const Join = () => {
             Sign In
           </button>
         </Link>
-       <div className="vtag mt-20">version 2.3</div>
-       <div className="vtag ">Created by shabin k 😎</div>
+        <div className="vtag mt-20">version 2.3</div>
+        <div className="vtag ">Created by shabin k 😎</div>
       </div>
     </div>
   );
