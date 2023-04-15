@@ -11,6 +11,7 @@ import "./Chat.css";
 
 const ENDPOINT = import.meta.env.VITE_ENDPOINT_URL
 
+
 let socket;
 
 const Chat = () => {
@@ -19,10 +20,10 @@ const Chat = () => {
   const [users, setUsers] = useState("");
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const { name, room } = queryString.parse(location.search);
-    console.log(name,room);
 
     socket = io(ENDPOINT);
 
@@ -48,26 +49,35 @@ const Chat = () => {
 
   const sendMessage = (event) => {
     event.preventDefault();
-
     if (message) {
-      socket.emit("sendMessage", message, () => setMessage(""));
+      socket.emit("sendMessage", message, (res) =>{ 
+        if(res) {
+          setError(true);
+        }
+        setMessage("")
+      });
     }
   };
 
   return (
     <div className="outerContainer">
       <div className="container">
-        <InfoBar room={room} />
+        <InfoBar room={room}  error={error}/>
         <Messages messages={messages} name={name} />
         <Input
+          error={error}
+          room={room}
+          name={name}
           message={message}
           setMessage={setMessage}
           sendMessage={sendMessage}
         />
       </div>
-      <TextContainer users={users} />
+     <TextContainer users={users} />
     </div>
   );
 };
 
 export default Chat;
+
+

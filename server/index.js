@@ -52,7 +52,9 @@ io.on("connect", (socket) => {
 
   socket.on("sendMessage", (message, callback) => {
     const user = getUser(socket.id);
-
+     // Handle error when user is not found
+    if (!user) return callback("error");
+    
     io.to(user.room).emit("message", { user: user.name, text: message });
 
     callback();
