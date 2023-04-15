@@ -1,5 +1,4 @@
 .form {
-  display: flex;
   border-top: 2px solid #d3d3d3;
 }
 
@@ -31,7 +30,6 @@ select:focus {
 .errorButton {
   color: #fff !important;
   font-size: large;
-  font-size: x-large;
   font-weight: bold;
   text-transform: uppercase;
   text-decoration: none;
@@ -41,7 +39,10 @@ select:focus {
 }
 
 .errorText {
-  margin-left: 140px;
+  text-align: center;
+  margin-left: 150px;
+  display: inline-block;
+  text-decoration: none;
 }
 
 .errorButton:hover{

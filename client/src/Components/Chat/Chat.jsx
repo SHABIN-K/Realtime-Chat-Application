@@ -20,7 +20,7 @@ const Chat = () => {
   const [users, setUsers] = useState("");
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(true);
 
   useEffect(() => {
     const { name, room } = queryString.parse(location.search);
@@ -66,8 +66,6 @@ const Chat = () => {
         <Messages messages={messages} name={name} />
         <Input
           error={error}
-          room={room}
-          name={name}
           message={message}
           setMessage={setMessage}
           sendMessage={sendMessage}

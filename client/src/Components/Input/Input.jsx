@@ -1,27 +1,23 @@
-import React, {useState} from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import queryString from "query-string";
 
 import "./Input.css";
 
-const Input = ({ setMessage, sendMessage, message, error}) => {
-  const navigate = useNavigate();
-
+const Input = ({ setMessage, sendMessage, message, error }) => {
   const { name, room } = queryString.parse(location.search);
 
   const [exitName, setExitName] = useState(() => name);
   const [exitRoom, setExitRoom] = useState(() => room);
 
-  const errorReload = () => {    
-    navigate(`/chat?name=${exitName}&room=${exitRoom}`, { replace: true });
-  }
-
   return (
     <form className="form">
       {error ? (
-        <div className="errorButton" onClick={() => errorReload()}>
-          <p className="errorText">Reload</p>
-        </div>
+        <Link to={`/reload-chat?exitName=${exitName}&exitRoom=${exitRoom}`}>
+          <div className="errorButton">
+            <h3 className="errorText">Try again</h3>
+          </div>
+        </Link>
       ) : (
         <>
           <input
