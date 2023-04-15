@@ -44,6 +44,10 @@
   .mt-20 {
     margin-top: 20px;
   }
+
+  .vtag {
+    color: #fff !important;
+  }
   
   @media (min-width: 320px) and (max-width: 480px) {
     .joinOuterContainer {
