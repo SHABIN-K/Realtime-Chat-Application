@@ -14,10 +14,10 @@ export default defineConfig(({ mode }) => {
         injectRegister: "auto",
         devOptions: { enabled: true },
         manifest: {
-          name: "Real time chat app",
-          short_name: "",
-          description: "full stack realtime chat app",
-          theme_color: "#14b8a5",
+          name: "chat app",
+          short_name: "chat app",
+          description: "Stay connected with friends and family or meet new people through dynamic group chats",
+          theme_color: "#1a1a1d",
           icons: [
             {
               src: "android-chrome-192x192.png",

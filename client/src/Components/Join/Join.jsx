@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import "./Join.css";
+import Wtf from "../wtf";
 
 const Join = () => {
   const [name, setName] = useState("");
@@ -41,8 +42,9 @@ const Join = () => {
             Sign In
           </button>
         </Link>
-        <div className="vtag mt-20">version 2.5</div>
-        <div className="vtag ">Created by shabin k 😎</div>
+        <div className="vtag mt-20">version 0.2.6</div>
+        <div className="vtag ">Created by <a href="https://github.com/SHABIN-K" className="ctag">shabin k 😎</a></div>
+        <Wtf/>
       </div>
     </div>
   );

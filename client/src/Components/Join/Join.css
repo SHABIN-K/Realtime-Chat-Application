@@ -26,6 +26,7 @@
 
 .error {
   font-weight: bold;
+  color: rgb(205, 71, 41);
 }
 
 .button {
@@ -47,6 +48,11 @@
 .vtag {
   color: #fff !important;
 }
+.ctag {
+  color: #fff !important;
+  text-decoration: none;
+}
+
 
 @media (min-width: 320px) and (max-width: 480px) {
   .joinOuterContainer {
