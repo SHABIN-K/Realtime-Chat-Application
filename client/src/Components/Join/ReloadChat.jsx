@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import queryString from "query-string";
 import "./ReloadChat.css";
+import Wtf from "../contact/Wtf";
 
 const ReloadChat = () => {
   const { exitName, exitRoom } = queryString.parse(location.search);
@@ -17,6 +18,14 @@ const ReloadChat = () => {
             Reload
           </button>
         </Link>
+        <div className="vtag mt-20">version 0.2.6</div>
+        <div className="vtag ">
+          Created by{" "}
+          <a href="https://github.com/SHABIN-K" className="ctag">
+            shabin k 😎
+          </a>
+        </div>
+        <Wtf />
       </div>
     </div>
   );

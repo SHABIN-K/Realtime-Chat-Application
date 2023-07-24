@@ -1,0 +1,30 @@
+.wtfOuter {
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    margin-right: 4px;
+    margin-top: 40px;
+    cursor: pointer;
+}
+
+.wtf{
+    display: flex;
+    color: black;
+    background: rgb(227, 227, 12);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    animation: rotate 3s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+      transform: rotate(0deg); /* Starting rotation angle */
+    }
+    to {
+      transform: rotate(360deg); /* Ending rotation angle */
+    }
+  }
