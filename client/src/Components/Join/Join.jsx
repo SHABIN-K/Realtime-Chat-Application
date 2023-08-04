@@ -42,6 +42,13 @@ const Join = () => {
             Sign In
           </button>
         </Link>
+        <div className="vtag mt-20">version 0.2.6</div>
+        <div className="vtag ">
+          Created by{" "}
+          <a href="https://github.com/SHABIN-K" className="ctag">
+            shabin k 😎
+          </a>
+        </div>
         <Wtf />
       </div>
     </div>
