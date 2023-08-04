@@ -34,11 +34,6 @@
   color: #828282;
   letter-spacing: 0.3px;
 }
-.buttonBox {
-  display: flex;
-  flex-direction: row;
-
-}
 .pl-10 {
   padding-left: 10px;
 }
