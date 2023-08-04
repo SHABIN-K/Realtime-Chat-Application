@@ -13,8 +13,49 @@ const Message = ({ message: { text, user }, name }) => {
   }
 
   const handleCopy = (text) => {
-    navigator.clipboard.writeText(text).then(() => {
-      toast.success("🦄 Link copied !", {
+    try {
+      const el = document.createElement("textarea");
+      el.value = text;
+      el.setAttribute("readonly", "");
+      el.style.position = "absolute";
+      el.style.left = "-9999px";
+      document.body.appendChild(el);
+      const selected =
+        document.getSelection().rangeCount > 0
+          ? document.getSelection().getRangeAt(0)
+          : false;
+      el.select();
+      const success = document.execCommand("copy");
+      document.body.removeChild(el);
+      if (selected) {
+        document.getSelection().removeAllRanges();
+        document.getSelection().addRange(selected);
+      }
+      if (success) {
+        toast.success("🦄 Link copied!", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      } else {
+        toast.error("Copying failed", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      }
+    } catch (err) {
+      toast.error("Copying failed", {
         position: "top-right",
         autoClose: 3000,
         hideProgressBar: false,
@@ -24,7 +65,7 @@ const Message = ({ message: { text, user }, name }) => {
         progress: undefined,
         theme: "light",
       });
-    });
+    }
   };
 
   return isSentByCurrentUser ? (
