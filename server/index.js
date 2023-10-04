@@ -16,13 +16,6 @@ const {
 const app = express();
 const server = http.createServer(app);
 
-var origins = [
-  "http://localhost:3001",
-  "http://localhost:5000",
-  "https://realtime-chat-application-o4ad.onrender.com",
-  "https://chatopiaa.netlify.app/",
-];
-
 const io = socketio(server, {
   cors: {
     origin: "*",
@@ -88,6 +81,7 @@ io.on("connect", (socket) => {
 server.listen(PORT, () => console.log(`Server has started`));
 
 instrument(io, {
+  namespaceName: "/",
   auth: {
     type: "basic",
     username: process.env.socketio_username,
