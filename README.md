@@ -22,20 +22,12 @@ Clone the project
 
 ```bash
   git clone https://github.com/SHABIN-K/Realtime-Chat-Application.git
+  cd client
+  # <Create .env appropriately>
+  cd ..
+  npm run devnpm
+  npm run dev
 ```
-**Client:**
-````bash
-cd client
-npm install
-# <Create .env appropriately>
-npm run dev
-````
-**Server:**
-````bash
-cd server
-npm install
-npm start
-````
 
 ## Support   
 Join Our [Telegram Group](https://www.telegram.dog/codexbotzsupport) For Support/Assistance And Our [Channel](https://www.telegram.dog/codexbotz) For Updates.   
