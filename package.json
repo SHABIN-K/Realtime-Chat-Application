@@ -1,0 +1,29 @@
+{
+  "name": "chatopiaa",
+  "version": "2023.0.7",
+  "description": "Full stack real time chat application ",
+  "scripts": {
+    "clientnpm": "npm i --prefix client",
+    "servernpm": "npm i --prefix server",
+    "devnpm": "concurrently \"npm run clientnpm\" \"npm run servernpm\"",
+    "client": "npm run dev --prefix client",
+    "server": "npm start --prefix server",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "keywords": [ 
+    "chatingapp",
+    "private",
+    "shabink",
+    "datingapp",
+    "personalapp"
+  ],
+  "author": {
+    "name": "shabin k",
+    "email": "heyshabink@gmail.com",
+    "url": "https://github.com/SHABIN-K"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.1"
+  }
+}
