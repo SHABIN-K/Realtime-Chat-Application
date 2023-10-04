@@ -1,6 +1,6 @@
 const express = require("express");
 const http = require("http");
-require('dotenv').config();
+require("dotenv").config();
 const socketio = require("socket.io");
 const cors = require("cors");
 const { instrument } = require("@socket.io/admin-ui");
@@ -19,21 +19,20 @@ const server = http.createServer(app);
 var origins = [
   "http://localhost:3001",
   "http://localhost:5000",
+  "https://realtime-chat-application-o4ad.onrender.com",
   "https://chatopiaa.netlify.app/",
 ];
 
 const io = socketio(server, {
   cors: {
-    origin: origins,
+    origin: "*",
     methods: ["GET", "POST"],
     credentials: true,
   },
 });
 
-
-
 app.use(cors());
-app.use(express.static('../server/node_modules/@socket.io/admin-ui/ui/dist'));
+app.use(express.static("../server/node_modules/@socket.io/admin-ui/ui/dist"));
 
 io.on("connect", (socket) => {
   console.log("user connected");
@@ -62,9 +61,9 @@ io.on("connect", (socket) => {
 
   socket.on("sendMessage", (message, callback) => {
     const user = getUser(socket.id);
-     // Handle error when user is not found
+    // Handle error when user is not found
     if (!user) return callback("error");
-    
+
     io.to(user.room).emit("message", { user: user.name, text: message });
 
     callback();
