@@ -81,10 +81,10 @@ io.on("connect", (socket) => {
 server.listen(PORT, () => console.log(`Server has started`));
 
 instrument(io, {
-  namespaceName: "/",
   auth: {
     type: "basic",
     username: process.env.socketio_username,
     password: process.env.socketio_admin_password,
   },
+  mode: "production"
 });
