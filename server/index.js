@@ -86,5 +86,4 @@ instrument(io, {
     username: process.env.socketio_username,
     password: process.env.socketio_admin_password,
   },
-  mode: "production"
 });
