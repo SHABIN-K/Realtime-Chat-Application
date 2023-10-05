@@ -29,6 +29,11 @@ app.use(express.static("../server/node_modules/@socket.io/admin-ui/ui/dist"));
 
 io.on("connect", (socket) => {
   console.log("user connected");
+  socket.on("userconnection", (msg, callback) => {
+    console.log("user connection msg received :" + msg);
+    callback("got it")
+  })
+
   socket.on("join", ({ name, room }, callback) => {
     const { error, user } = addUser({ id: socket.id, name, room });
 
