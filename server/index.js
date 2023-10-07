@@ -1,11 +1,11 @@
 const express = require("express");
-const http = require("http");
-require("dotenv").config();
-const socketio = require("socket.io");
+const { createServer } = require("http");
 const cors = require("cors");
+require("dotenv").config();
+
+const { Server } = require("socket.io");
 const { instrument } = require("@socket.io/admin-ui");
 
-const PORT = process.env.PORT || 5000;
 const {
   addUser,
   removeUser,
@@ -14,25 +14,31 @@ const {
 } = require("./Users/users");
 
 const app = express();
-const server = http.createServer(app);
+const server = createServer(app);
+app.use(cors());
 
-const io = socketio(server, {
+var origins = [
+  "http://localhost:3001",
+  "https://admin.socket.io",
+  "https://chatopiaa.netlify.app/",
+];
+
+const io = new Server(server, {
   cors: {
-    origin: "*",
+    origin: origins,
     methods: ["GET", "POST"],
     credentials: true,
   },
 });
 
-app.use(cors());
-app.use(express.static("../server/node_modules/@socket.io/admin-ui/ui/dist"));
+//app.use(express.static("../server/node_modules/@socket.io/admin-ui/ui/dist"));
 
 io.on("connect", (socket) => {
   console.log("user connected");
   socket.on("userconnection", (msg, callback) => {
     console.log("user connection msg received :" + msg);
-    callback("got it")
-  })
+    callback("got it");
+  });
 
   socket.on("join", ({ name, room }, callback) => {
     const { error, user } = addUser({ id: socket.id, name, room });
@@ -83,12 +89,9 @@ io.on("connect", (socket) => {
   });
 });
 
+const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => console.log(`Server has started`));
 
 instrument(io, {
-  auth: {
-    type: "basic",
-    username: process.env.socketio_username,
-    password: process.env.socketio_admin_password,
-  },
+  auth: false,
 });
