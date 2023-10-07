@@ -6,6 +6,7 @@ import Wtf from "../contact/Wtf";
 import { runServer } from "../../runServer";
 
 runServer();
+
 const Join = () => {
   const [name, setName] = useState("");
   const [room, setRoom] = useState("");
