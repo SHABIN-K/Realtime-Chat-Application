@@ -5,7 +5,9 @@ import "./app.css";
 import Wtf from "./Components/contact/Wtf";
 
 import { pwaInfo } from 'virtual:pwa-info'
+
 import { runServer } from "./runServer";
+import ReloadPrompt from "./ReloadPrompt";
 
 runServer();
 
@@ -56,6 +58,7 @@ const App = () => {
           </a>
         </div>
         <Wtf />
+        <ReloadPrompt />
       </div>
     </div>
   );
